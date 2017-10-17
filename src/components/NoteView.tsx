@@ -3,6 +3,7 @@ import NoteListItem from "./NoteListItem"
 import Note from "../models/Note"
 import NoteContentView from "./NoteContentView"
 import NoteManager from "../models/NoteManager"
+import Button from "material-ui/FlatButton"
 
 const manager = new NoteManager()
 manager.notes.forEach(element => {
@@ -101,11 +102,11 @@ export default class NoteView extends React.Component<{}, State> {
         )
         return (
             <div className="row">
-                <button onClick={this.newNote} className="btn"></button>
-                <ul className="notelist list-group col-4">
+                <ul className="col-mid-4">
                     {notes}
                 </ul>
-
+                <Button onClick={this.newNote} className="col-mid-8">New</Button>
+                <br />
                 <NoteContentView note={this.state.selected} handleContentChange={this.handleContentChange} handleNameChange={this.handleNameChange} />
             </div>
         )

@@ -1,5 +1,6 @@
 import * as React from "react"
 import Note from "../models/Note"
+import Button from "material-ui/FlatButton"
 
 interface Prop {
     note: Note
@@ -26,7 +27,7 @@ export default class NoteListItem extends React.Component<Prop, State> {
 
     render() {
         return (
-            <li className="list-group-item"><button type="button" className="btn list-group-item-action" onClick={this.onClick}>{this.state.note.name}</button></li>
+            <li className="list-group-item"><Button type="button" className="list-group-item-action" onClick={this.onClick}>{this.state.note.name}</Button></li>
         )
     }
 }
