@@ -6,9 +6,7 @@ import NoteManager from "../models/NoteManager"
 import Button from "material-ui/FlatButton"
 
 const manager = new NoteManager()
-manager.notes.forEach(element => {
-    console.log(element)
-})
+
 interface State {
     notes: Note[]
     selected: Note
