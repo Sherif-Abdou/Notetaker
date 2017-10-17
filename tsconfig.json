@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react",
+        "typeRoots": [
+            "./node_modules/@typings"
+        ],
+        "sourceMap": true,
+        "outDir": "./lib"
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

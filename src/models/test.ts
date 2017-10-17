@@ -1,0 +1,5 @@
+var manager = require("./NoteManager.js")
+var Note = require("./Note.js")
+manager.Manager.notes += new Note.default("hi")
+console.log(manager.Manager.notes)
+//manager.Manager.save()
