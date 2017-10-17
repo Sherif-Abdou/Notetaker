@@ -4,11 +4,19 @@ import Note from "./Note"
 
 
 class NoteManager {
-    filePath = "/Users/Sherif/Library/Application Support/Notetaker/notes.json"
+    filePath = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : '/var/local') + "/Notetaker/notes.json"
     notes: Note[] = []
     constructor() {
-        let obj = fs.readFileSync(this.filePath)
-        this.notes = (JSON.parse(obj.toString())).notes
+        let obj
+        try {
+            obj = fs.readFileSync(this.filePath)
+            this.notes = (JSON.parse(obj.toString())).notes
+        } catch (error) {
+            let note = new Note("")
+            fs.writeFile(this.filePath, JSON.stringify({notes: [note]}))
+            this.notes.push(note)
+        }
+        
         // fs.readFile(this.filePath, (err, obj) => {
         //     if (err) {
         //         if (err.code == 'ENOENT') {
@@ -32,6 +40,7 @@ class NoteManager {
             }
             new_array.push(obj)
         }
+        process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + 'Library/Preferences' : '/var/local')        
         console.log(new_array)
         json.writeFile(this.filePath, {notes: new_array})
     }
