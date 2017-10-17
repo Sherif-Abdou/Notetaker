@@ -1,5 +1,6 @@
 import * as React from "react"
 import Note from "../models/Note"
+import TextField from "material-ui/TextField"
 interface Prop {
     note: Note
     handleNameChange: (id, val) => Note
@@ -37,10 +38,10 @@ export default class NoteContent extends React.Component<Prop, State> {
         return (
             <form className="col-mid-8">
                 <label className="form-group">
-                    Name: 
-                    <input type="text" className="form-control" value={this.props.note.name} onChange={this.handleNameChange}/>
+                    <TextField type="text" value={this.props.note.name} onChange={this.handleNameChange}/>
                 </label>
-                <textarea className="form-control" onChange={this.handleContentChange} value={this.props.note.contents}></textarea>
+                <br />
+                <TextField multiLine={true} onChange={this.handleContentChange} value={this.props.note.contents} />
             </form>
         )
     }
